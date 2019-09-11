@@ -5,25 +5,33 @@
  */
 package mazegame;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author scott
  */
-public class Screen {
-    
+public class MainMenu {
     private JFrame frame = new JFrame("MAZE.EXE");
+    private JPanel pane;
+    private JButton playButton;
+    private JButton exitButton;
     
     /**
      * Creates any necessary screen
      * @param imageName - url pathname for an image or gif
      */
-    public void createScreen(String imageName){
+    public void createMain(String imageName){
         JFrame.setDefaultLookAndFeelDecorated(true);
         frame.setPreferredSize(new Dimension(800, 800));
         frame.pack();
@@ -34,18 +42,21 @@ public class Screen {
         frame.getContentPane().setBackground(Color.white);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        SwingUtilities.invokeLater(new MainMenu()::showButtons);
     }
     
-    /**
-     * if frame visibility is true then it sets it to false
-     * if frame visibility is false then it sets it to true
-     */
-    public void visibility(){
-        if(frame.isShowing()){ //if intro screen is visible
-            frame.setVisible(false);
-        }else{
-            frame.setVisible(true);
-        }
+    public void showButtons(){
+        pane = new JPanel();
+        pane.setLayout(new BoxLayout(pane, BoxLayout.LINE_AXIS));
+        
+        playButton = new JButton("Play Game");
+        exitButton = new JButton("Exit Game");
+        
+        pane.add(playButton);
+        pane.add(Box.createHorizontalGlue());
+        pane.add(exitButton);
+        
+        frame.add(pane, BorderLayout.SOUTH);
     }
     
 }
