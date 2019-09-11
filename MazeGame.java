@@ -14,7 +14,7 @@ package mazegame;
 public class MazeGame {
 
     //need to edit path file for these images
-    static String loadURL = "C://Users/scott/Documents/NetBeansProjects/CECS 445/MazeGame/src/mazegame/LoadingBar.gif";
+    static String loadURL = "C://Users/scott/Documents/NetBeansProjects/CECS 445/MazeGame/src/mazegame/loading.gif";
     static String introURL = "C://Users/scott/Documents/NetBeansProjects/CECS 445/MazeGame/src/mazegame/Intro_Instructions.PNG";
 
     public static void main(String[] args) {
