@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package mazegame;
+
 
 public class MazeGame {
 
@@ -12,13 +14,13 @@ public class MazeGame {
 
     public static void main(String[] args) {
         Screen loadScreen = new Screen();
+        MainMenu mainScreen = new MainMenu();
         loadScreen.createScreen(loadURL);
         int secondsToSleep = 3;
         try {
             Thread.sleep(secondsToSleep * 1000);
             loadScreen.visibility();
-            Screen introScreen = new Screen();
-            introScreen.createScreen(introURL);
+            mainScreen.createMain(introURL);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
