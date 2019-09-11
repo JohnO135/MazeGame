@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mazegame;
 
-
-
-/**
- *
- * @author scott
- */
 public class MazeGame {
 
     //need to edit path file for these images
-    static String loadURL = "C://Users/scott/Documents/NetBeansProjects/CECS 445/MazeGame/src/mazegame/LoadingBar.gif";
-    static String introURL = "C://Users/scott/Documents/NetBeansProjects/CECS 445/MazeGame/src/mazegame/Intro_Instructions.PNG";
+    static String loadURL = "C:\\Users\\theme\\eclipse-workspace\\MazeGame\\src\\loading.gif";
+    static String introURL = "C:\\Users\\theme\\eclipse-workspace\\MazeGame\\src\\Intro_Instructions.PNG";
 
     public static void main(String[] args) {
         Screen loadScreen = new Screen();
