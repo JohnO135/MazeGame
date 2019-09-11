@@ -28,7 +28,7 @@ public class Screen {
         frame.setPreferredSize(new Dimension(800, 800));
         frame.pack();
         frame.setLocationRelativeTo(null);
-        ImageIcon icon = new ImageIcon(url);
+        ImageIcon icon = new ImageIcon(this.getClass().getResource(url));
         JLabel label = new JLabel(icon);
         frame.add(label);
         frame.getContentPane().setBackground(Color.white);
