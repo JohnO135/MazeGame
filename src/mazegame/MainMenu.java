@@ -8,14 +8,11 @@ package mazegame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.EventQueue;
 
 
 public class MainMenu {
@@ -23,6 +20,8 @@ public class MainMenu {
     private JPanel pane;
     private JButton playButton;
     private JButton exitButton;
+
+    static String mazeGif = "maze.gif"; //NOT NECESSARY
     
     /**
      * Creates any necessary screen
@@ -40,9 +39,31 @@ public class MainMenu {
         
         pane = new JPanel();
         pane.setLayout(new BoxLayout(pane, BoxLayout.LINE_AXIS));
-        
+
+        /**
+         * Added functionality to the Play Game button.
+         * The user will be redirected to the Maze screen or start of the game.
+         */
         playButton = new JButton("Play Game");
+        playButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                LoadMap mapScreen = new LoadMap(); //Create new screen with Maze map
+                mapScreen.createMap(mazeGif); // //mazeGif not necessary just wanted to add lol.
+            }
+        });
+        /**
+         * Added functionality to the Exit Game button.
+         * Will close the current screen.
+         */
         exitButton = new JButton("Exit Game");
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
         
         pane.add(playButton);
         pane.add(Box.createHorizontalGlue());
@@ -53,6 +74,8 @@ public class MainMenu {
         frame.getContentPane().setBackground(Color.white);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-    }
-    
-}
+
+    } //end of CreateMain method
+
+
+}//end of class MainMenu
