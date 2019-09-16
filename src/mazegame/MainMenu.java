@@ -16,10 +16,11 @@ import java.awt.EventQueue;
 
 
 public class MainMenu {
-    private JFrame frame = new JFrame("MAZE.EXE");
+    private final JFrame frame = new JFrame("MAZE.EXE");
     private JPanel pane;
     private JButton playButton;
     private JButton exitButton;
+    private JButton mazeCreatorButton;
 
     static String mazeGif = "maze.gif"; //NOT NECESSARY
     
@@ -64,10 +65,24 @@ public class MainMenu {
                 System.exit(0);
             }
         });
+        /**
+         * Added functionality to the Map Creator button.
+         * Allow user to create maze maps by clicking squares.
+         */
+        mazeCreatorButton = new JButton("Maze Creator");
+        mazeCreatorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO
+            }
+        });
         
         pane.add(playButton);
         pane.add(Box.createHorizontalGlue());
+        pane.add(mazeCreatorButton);
+        pane.add(Box.createHorizontalGlue());
         pane.add(exitButton);
+        pane.setBackground(Color.WHITE);
         
         frame.add(pane, BorderLayout.SOUTH);
         

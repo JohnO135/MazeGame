@@ -16,7 +16,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 public class LoadMap {
 
@@ -49,6 +48,7 @@ public class LoadMap {
 
         pane.add(exitButton);
         pane.add(Box.createHorizontalGlue());
+        pane.setBackground(Color.WHITE);
 
         frame.add(pane, BorderLayout.SOUTH);
 
