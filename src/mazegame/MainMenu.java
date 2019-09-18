@@ -50,8 +50,9 @@ public class MainMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                LoadMap mapScreen = new LoadMap(); //Create new screen with Maze map
-                mapScreen.createMap(mazeGif); // //mazeGif not necessary just wanted to add lol.
+                //LoadMap mapScreen = new LoadMap(); //Create new screen with Maze map
+                //mapScreen.createMap(mazeGif); // //mazeGif not necessary just wanted to add lol.
+                new Difficulty();
             }
         });
         /**
