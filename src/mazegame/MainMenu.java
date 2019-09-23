@@ -22,7 +22,7 @@ public class MainMenu {
     private JButton exitButton;
     private JButton mazeCreatorButton;
 
-    static String mazeGif = "maze.gif"; //NOT NECESSARY
+    static String mazeGif = "Pattypatpat.gif"; //NOT NECESSARY
     
     /**
      * Creates any necessary screen
