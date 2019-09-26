@@ -73,7 +73,8 @@ public class MainMenu {
         mazeCreatorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
+                new MazeCreator();
+                frame.setVisible(false);
             }
         });
         
