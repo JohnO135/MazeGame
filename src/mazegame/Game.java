@@ -47,14 +47,14 @@ public class Game implements Runnable{
         keyManager = new KeyManager(); //Initialize the KeyManager
         //testImage = ImageLoader.loadImage("\\resources\\test.png");
         window.getJFrame().addKeyListener(keyManager); //Add to game display jframe
-        player = new Player(this, 100, 100); //Initialize a player object
+        //player = new Player(this, 100, 100); //Initialize a player object
         maploader = new MapLoader(this, "Maze 0");
     }
     
     private void tick() //updater for values
     {
       keyManager.tick(); //updates the manager for input
-      player.tick(); //update the player values
+      //player.tick(); //update the player values
     }
     
     private void render() //renders the images to canvas
@@ -75,8 +75,8 @@ public class Game implements Runnable{
 
         //Draw commands
         //g.drawImage(testImage, x, y, null);
-        player.render(g); //This uses the player's individual render method
-        maploader.render(g);
+        //player.render(g); //This uses the player's individual render method
+        //maploader.render(g);
         
         //Command to display the commands to canvas
         bs.show(); 

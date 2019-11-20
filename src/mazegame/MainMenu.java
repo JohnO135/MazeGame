@@ -11,8 +11,13 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.JComboBox;
 import javax.swing.border.EmptyBorder;
 import java.awt.EventQueue;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
 
 
 public class MainMenu {
@@ -21,6 +26,8 @@ public class MainMenu {
     private JButton playButton;
     private JButton exitButton;
     private JButton mazeCreatorButton;
+    private JComboBox<String> lvlList;
+    private ArrayList<String> mapList = new ArrayList<String>();
 
     static String mazeGif = "maze.gif"; //NOT NECESSARY
     
@@ -40,6 +47,10 @@ public class MainMenu {
         
         pane = new JPanel();
         pane.setLayout(new BoxLayout(pane, BoxLayout.LINE_AXIS));
+        
+        getMapList();
+        lvlList = new JComboBox<String>(mapList.toArray(new String[mapList.size()]));
+
 
         /**
          * Added functionality to the Play Game button.
@@ -50,8 +61,8 @@ public class MainMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                Game game = new Game("Working on it", 600, 600);
-                game.start();
+                Maze maze = new Maze(lvlList.getSelectedItem().toString());
+                frame.setVisible(false);
             }
         });
         /**
@@ -92,6 +103,20 @@ public class MainMenu {
         frame.setVisible(true);
 
     } //end of CreateMain method
+    
+    static boolean levelsExistAlready = false;
+
+    public void getMapList(){
+        for(int i = 0; i < 99; i++){
+            File map = new File("./Level "+i+".map");
+            if(map.exists()){
+                System.out.println("Level "+i+" exists");
+                mapList.add("Level "+i+".map");
+                levelsExistAlready = true;
+            }
+        }
+    }
+    
 
 
 }//end of class MainMenu

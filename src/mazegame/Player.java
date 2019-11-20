@@ -1,57 +1,44 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mazegame;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
-/**
- *
- * @author theme
- */
-public class Player extends Entity {
+import java.awt.Color;
 
-    private BufferedImage sprite; //Sets the private value for the sprite for players
-    private Game game; //Creates a private game so we can access the game methods from within this class by passing the
-    //main game object into the contructor.
-    
-    public Player(Game game, float x, float y)
-    {
-        super(x, y);
-        this.game = game; //game is set to main game method
-        ImageLoader IM = new ImageLoader(); //Creates an image loader
-        sprite = IM.loadImage("\\test.png"); //Sets the sprite for the player
-        
+import javax.swing.JPanel;
+
+
+public class Player extends JPanel{
+    int x, y;
+
+    public Player() {
+        this.setBackground(Color.getHSBColor(0.3f, 0.3f, 1));
+        this.setSize(Maze.panelSize, Maze.panelSize);
     }
-    
-    //This is the individual position updater
-    @Override
-    public void tick() {
-        if(game.getKeyManager().up)
-        {
-            y -= 3;
-        }
-        if(game.getKeyManager().down)
-        {
-            y += 3;
-        }
-        if(game.getKeyManager().left)
-        {
-            x -= 3;
-        }if(game.getKeyManager().right)
-        {
-            x += 3;
+
+    public void moveLeft() {
+        if(x > 0 && Maze.map[x-1][y] == 1){
+            this.setLocation(this.getX()-25, this.getY());
+            x--;
         }
     }
 
-    //Individual render method for simplicity in main
-    @Override
-    public void render(Graphics g) {
-        g.drawImage(sprite, (int)x, (int)y, null); //The method needs integer values so we cast it
+    public void moveRight() {
+        if(x < Maze.columns-1 && Maze.map[x+1][y] == 1){
+            this.setLocation(this.getX()+25, this.getY());
+            x++;
+        }
     }
-    
-    
+
+    public void moveUp() {
+        if(y > 0 && Maze.map[x][y-1] == 1){
+            this.setLocation(this.getX(), this.getY()-25);
+            y--;
+        }
+    }
+
+    public void moveDown() {
+        if(y < Maze.rows-1 && Maze.map[x][y+1] == 1){
+            this.setLocation(this.getX(), this.getY()+25);
+            y++;
+        }
+    }
 }
