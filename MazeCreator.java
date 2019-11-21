@@ -61,9 +61,7 @@ public class MazeCreator extends JFrame{
                             tile.setBackground(Color.GRAY);
                             break;
                     }
-
                     tile.setVisible(true);
-
                     this.add(tile);
                 }
             }

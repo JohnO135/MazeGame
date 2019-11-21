@@ -27,7 +27,7 @@ public class Maze extends JFrame{
         loadMap(str);
         this.setResizable(false);
         this.setSize((columns*panelSize)+50, (rows*panelSize)+70);
-        this.setTitle("Maze.EXE");
+        this.setTitle("Maze.exe");
         this.setLayout(null);
 
         this.addKeyListener(new KeyListener(){
@@ -53,7 +53,8 @@ public class Maze extends JFrame{
                     p.moveRight();
                 }
 
-                if(p.x == endMazeX && p.y == endMazeY){ // checking for that one green exit tile
+                // Checking for that one green exit tile
+                if(p.x == endMazeX && p.y == endMazeY){
                     JOptionPane.showMessageDialog(null, "Congratulations! You escaped the maze!", "End Game", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                     new MainMenu();
@@ -110,7 +111,6 @@ public class Maze extends JFrame{
                             p.y = y;
                         } break;
                 }
-
                 tile.setVisible(true);
                 this.add(tile);
             }

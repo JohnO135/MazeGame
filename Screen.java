@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 
 public class Screen {
     
-    private final JFrame frame = new JFrame("MAZE.EXE");
+    private final JFrame frame = new JFrame("Maze.exe");
     
     /**
      * Creates any necessary screen

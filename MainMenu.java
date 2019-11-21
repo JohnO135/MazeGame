@@ -17,14 +17,14 @@ import javax.swing.JLabel;
  */
 public class MainMenu {
     
-    static String introURL = "Main_Menu.PNG";
+    static String menuURL = "Main_Menu.PNG";
 
-    JFrame Menu = new JFrame("Maze.EXE");
+    JFrame Menu = new JFrame("Maze.exe");
     JButton Start = new JButton("Play Game");
-    JButton Exit = new JButton("Exit Game");
     JButton MazeCreator = new JButton("Maze Creator");
-    ImageIcon picture = new ImageIcon(this.getClass().getResource(introURL));
-    JLabel imageLabel = new JLabel(picture);
+    JButton Exit = new JButton("Exit Game");
+    ImageIcon instructions = new ImageIcon(this.getClass().getResource(menuURL));
+    JLabel imageLabel = new JLabel(instructions);
     ArrayList<String> mapList;
     JComboBox<String> numList;
     
@@ -52,7 +52,6 @@ public class MainMenu {
         Start.setLocation(40, menuY);
         Menu.add(Start);
         Start.addActionListener(new ActionListener(){
-
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 new Maze(numList.getSelectedItem().toString());
@@ -66,7 +65,6 @@ public class MainMenu {
         MazeCreator.setLocation(215, menuY);
         Menu.add(MazeCreator);
         MazeCreator.addActionListener(new ActionListener(){
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MazeCreator();
@@ -85,19 +83,17 @@ public class MainMenu {
         Exit.setLocation(610,menuY);
         Menu.add(Exit);
         Exit.addActionListener(new ActionListener(){
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
         
-        // Display Picture
+        // Display Instructions Image
         imageLabel.setBounds((WIDTH-700)/2, 80, 700, 550);
         imageLabel.setVisible(true);
         Menu.add(imageLabel);
         Menu.setVisible(true);
-
     }
 
     static boolean mazeNumExistAlready = false;
