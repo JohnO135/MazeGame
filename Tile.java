@@ -11,6 +11,10 @@ public class Tile extends JPanel{
         this.y = y;
     }
 
+    /**
+     * Set the tile as a wall marker
+     * @param isWall - boolean to set if the tile is a wall (0)
+     */
     public void setWall(boolean isWall){
         this.isWall = isWall;
     }

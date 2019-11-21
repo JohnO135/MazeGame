@@ -23,6 +23,10 @@ public class Maze extends JFrame{
     
     static String loadURL = "loading.gif";
 
+    /**
+     * Creates the maze map and its entirety with functioning playability
+     * @param str - name of maze map file
+     */
     public Maze(String str){
         loadMap(str);
         this.setResizable(false);
@@ -131,6 +135,10 @@ public class Maze extends JFrame{
         }
     }
 
+    /**
+     * Loads the maze map file
+     * @param str - name of the maze map file
+     */
     public static void loadMap(String str){
         try{
             BufferedReader br = new BufferedReader(new FileReader(str));

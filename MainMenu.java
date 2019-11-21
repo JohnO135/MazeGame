@@ -98,6 +98,9 @@ public class MainMenu {
 
     static boolean mazeNumExistAlready = false;
 
+    /**
+     * Retrieves all maze map created/saved
+     */
     public void getMapList(){
         for(int i = 0; i < 99; i++){
             File map = new File("./Maze " + i);

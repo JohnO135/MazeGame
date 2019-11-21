@@ -71,6 +71,9 @@ public class MazeCreator extends JFrame{
         }
     }
 
+    /**
+     * Retrieves the maze maps created/saved
+     */
     public void getMapList(){
         for(int i = 0; i < 99; i++){
             File map = new File("./Maze " + i);
@@ -82,6 +85,9 @@ public class MazeCreator extends JFrame{
         }
     }
 
+    /**
+     * Based on selection, it retrieves the maze according to its number 
+     */
     public void getMazeNumChoice(){
         if(mazeNumExistAlready){
             String maps[] = new String[99];
@@ -99,6 +105,9 @@ public class MazeCreator extends JFrame{
         }
     }
 
+    /**
+     * Saves the map the user creates to a file (consists of 0,1,2)
+     */
     public void saveMap(){
         try{
             PrintWriter writer;
@@ -115,6 +124,9 @@ public class MazeCreator extends JFrame{
         }
     }
 
+    /**
+     * Load the saved maze maps, based on the 0,1,2 numbers
+     */
     public void loadMap(){
         try{
             BufferedReader br = new BufferedReader(new FileReader("Maze " + mazeNum));
