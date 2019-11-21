@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+package mazegame;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +9,7 @@ import javax.swing.JLabel;
 
 public class Screen {
     
-    private JFrame frame = new JFrame("MAZE.EXE");
+    private final JFrame frame = new JFrame("MAZE.EXE");
     
     /**
      * Creates any necessary screen

@@ -1,11 +1,15 @@
+package mazegame;
 
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -16,11 +20,12 @@ public class MazeCreator extends JFrame{
     static int columns = 20;
     int panelSize = 25;
     static int map[][] = new int[columns][rows];
-    ArrayList<String> mapList = new ArrayList<String>();
+    ArrayList<String> mapList;
     int mazeNum = 0;
     boolean mazeNumExistAlready = false;
 
     public MazeCreator(){
+        this.mapList = new ArrayList<>();
         getMapList();
         getMazeNumChoice();
         if(mazeNum != -1){
@@ -91,7 +96,8 @@ public class MazeCreator extends JFrame{
 
     public void saveMap(){
         try{
-            PrintWriter writer = new PrintWriter("Maze " + mazeNum, "UTF-8");
+            PrintWriter writer;
+            writer = new PrintWriter("Maze " + mazeNum, "UTF-8");
             for(int y = 0; y < columns; y++){
                 for(int x = 0; x < rows; x++){
                     writer.print(map[x][y]);
@@ -99,7 +105,7 @@ public class MazeCreator extends JFrame{
                 writer.print("\r\n");
             }
             writer.close();
-        }catch(Exception e){
+        }catch(FileNotFoundException | UnsupportedEncodingException e){
             e.printStackTrace();
         }
     }
@@ -131,7 +137,7 @@ public class MazeCreator extends JFrame{
                     counter++;
                 }
             }
-        }catch(Exception e){
+        }catch(IOException | NumberFormatException e){
             System.out.println("Unable to load existing maze(if exists), creating new maze.");
             for(int y = 0; y < columns; y++){
                 for(int x = 0; x < rows; x++){

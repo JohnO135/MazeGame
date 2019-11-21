@@ -1,3 +1,4 @@
+package mazegame;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -6,10 +7,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class Maze extends JFrame{
     public static int rows = 20;
@@ -73,6 +74,7 @@ public class Maze extends JFrame{
         });
 
         this.addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e) {
                 //System.out.println((columns*panelSize)+50+"-"+((rows*panelSize)+70));
                 System.exit(0);
@@ -126,7 +128,7 @@ public class Maze extends JFrame{
         }
     }
 
-    public void loadMap(String str){
+    public static void loadMap(String str){
         try{
             BufferedReader br = new BufferedReader(new FileReader(str));
             StringBuilder sb = new StringBuilder();
@@ -153,7 +155,7 @@ public class Maze extends JFrame{
                     counter++;
                 }
             }
-        }catch(Exception e){
+        }catch(IOException | NumberFormatException e){
             System.out.println("Unable to load existing maze(if exists), creating new maze.");
         }
     }

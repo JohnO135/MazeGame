@@ -1,7 +1,7 @@
+package mazegame;
+
 import java.awt.Color;
-
 import javax.swing.JPanel;
-
 
 public class Player extends JPanel{
     int x, y;

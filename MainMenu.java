@@ -1,5 +1,5 @@
+package mazegame;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -25,7 +25,7 @@ public class MainMenu {
     JButton MazeCreator = new JButton("Maze Creator");
     ImageIcon picture = new ImageIcon(this.getClass().getResource(introURL));
     JLabel imageLabel = new JLabel(picture);
-    ArrayList<String> mapList = new ArrayList<String>();
+    ArrayList<String> mapList;
     JComboBox<String> lvlList;
     int menuWidth = 150; //Width of each button/item on display
     int menuHeight = 50;//Height of each button/item on display
@@ -34,9 +34,10 @@ public class MainMenu {
     int HEIGHT = 800;
 
     public MainMenu() {
+        this.mapList = new ArrayList<>();
         //Load map list
         getMapList();
-        lvlList = new JComboBox<String>(mapList.toArray(new String[mapList.size()]));
+        lvlList = new JComboBox<>(mapList.toArray(new String[mapList.size()]));
 
         //Menu Variables
         Menu.setResizable(false);

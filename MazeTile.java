@@ -1,3 +1,4 @@
+package mazegame;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -13,6 +14,7 @@ public class MazeTile extends JPanel{
         this.y = y;
 
         addMouseListener(new MouseAdapter(){
+            @Override
             public void mousePressed(MouseEvent e) {
                 if(e.getButton() == MouseEvent.BUTTON1){
                     setBackground(Color.WHITE);
