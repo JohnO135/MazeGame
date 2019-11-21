@@ -13,11 +13,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Maze extends JFrame{
-    public static int rows = 20;
-    public static int columns = 20;
+    public final static int rows = 20;
+    public final static int columns = 20;
     public static int panelSize = 25;
     public static int map[][] = new int[columns][rows];
-    public static int endMazeLoc;
+    public static int endMazeX;
+    public static int endMazeY;
     Player p;
     
     static String loadURL = "loading.gif";
@@ -38,7 +39,7 @@ public class Maze extends JFrame{
                 revalidate();
                 repaint();
 
-                //Player movement
+                // Player movement (WASD and arrow keys)
                 if(key == KeyEvent.VK_W || key == KeyEvent.VK_UP){
                     p.moveUp();
                 }
@@ -52,7 +53,7 @@ public class Maze extends JFrame{
                     p.moveRight();
                 }
 
-                if(p.x == columns-1 && p.y == endMazeLoc){
+                if(p.x == endMazeX && p.y == endMazeY){ // checking for that one green exit tile
                     JOptionPane.showMessageDialog(null, "Congratulations! You escaped the maze!", "End Game", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                     new MainMenu();
@@ -62,13 +63,11 @@ public class Maze extends JFrame{
             @Override
             public void keyReleased(KeyEvent arg0) {
                 // TODO Auto-generated method stub
-
             }
 
             @Override
             public void keyTyped(KeyEvent arg0) {
                 // TODO Auto-generated method stub
-
             }
 
         });
@@ -76,36 +75,40 @@ public class Maze extends JFrame{
         this.addWindowListener(new WindowAdapter(){
             @Override
             public void windowClosing(WindowEvent e) {
-                //System.out.println((columns*panelSize)+50+"-"+((rows*panelSize)+70));
                 System.exit(0);
             }
         });
 
         this.setLocationRelativeTo(null);
 
-        //Create player
+        // Create player
         p = new Player();
         p.setVisible(true);
         this.add(p);
 
-        //Color map
+        // Color map
         for(int y = 0; y < columns; y++){
             for(int x = 0; x < rows; x++){
                 Tile tile = new Tile(x, y);
                 tile.setSize(panelSize, panelSize);
                 tile.setLocation((x*panelSize)+23, (y*panelSize)+25);
-                if(map[x][y] == 0){
-                    tile.setBackground(Color.GRAY);
-                }else{
-                    tile.setBackground(Color.WHITE);
-                    tile.setWall(false);
-                    if(x == 0){
-                        p.setLocation((x*panelSize)+23, (y*panelSize)+25);
-                        p.y = y;
-                    }
-                    if(x == columns-1){
-                        endMazeLoc = y;
-                    }
+                switch (map[x][y]) {
+                    case 0: // wall tile
+                        tile.setBackground(Color.GRAY);
+                        break;
+                    case 2: // maze end tile
+                        tile.setBackground(Color.GREEN);
+                        tile.setWall(false);
+                        endMazeX = x;
+                        endMazeY = y;
+                        break;
+                    default: // path tile
+                        tile.setBackground(Color.WHITE);
+                        tile.setWall(false);
+                        if(x == 0){
+                            p.setLocation((x*panelSize)+23, (y*panelSize)+25);
+                            p.y = y;
+                        } break;
                 }
 
                 tile.setVisible(true);

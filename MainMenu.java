@@ -26,44 +26,43 @@ public class MainMenu {
     ImageIcon picture = new ImageIcon(this.getClass().getResource(introURL));
     JLabel imageLabel = new JLabel(picture);
     ArrayList<String> mapList;
-    JComboBox<String> lvlList;
-    int menuWidth = 150; //Width of each button/item on display
-    int menuHeight = 50;//Height of each button/item on display
-    int menuY = 700; //Button/item location on display
+    JComboBox<String> numList;
+    
+    int buttonWidth = 150; // Width of each button
+    int buttonHeight = 50;// Height of each button
+    int menuY = 700; // Button location
     int WIDTH = 800;
     int HEIGHT = 800;
 
     public MainMenu() {
         this.mapList = new ArrayList<>();
-        //Load map list
+        // Load map list
         getMapList();
-        lvlList = new JComboBox<>(mapList.toArray(new String[mapList.size()]));
+        numList = new JComboBox<>(mapList.toArray(new String[mapList.size()]));
 
-        //Menu Variables
+        // Menu Variables
         Menu.setResizable(false);
         Menu.setSize(WIDTH, HEIGHT);
         Menu.setLayout(null);
         Menu.setLocationRelativeTo(null);
         Menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        
-
-        //Start Button Variables
-        Start.setSize(menuWidth,menuHeight);
+        // Start Button
+        Start.setSize(buttonWidth,buttonHeight);
         Start.setLocation(40, menuY);
         Menu.add(Start);
         Start.addActionListener(new ActionListener(){
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                new Maze(lvlList.getSelectedItem().toString());
+                new Maze(numList.getSelectedItem().toString());
                 Menu.setVisible(false);
             }
 
         });
 
-        //Maze Creator Button Variables
-        MazeCreator.setSize(menuWidth,menuHeight);
+        // Maze Creator Button
+        MazeCreator.setSize(buttonWidth,buttonHeight);
         MazeCreator.setLocation(215, menuY);
         Menu.add(MazeCreator);
         MazeCreator.addActionListener(new ActionListener(){
@@ -76,13 +75,13 @@ public class MainMenu {
 
         });
 
-        //Maze Selector
-        lvlList.setSize(menuWidth+35, menuHeight);
-        lvlList.setLocation(390, menuY);
-        Menu.add(lvlList);
+        // Maze Selector
+        numList.setSize(buttonWidth+35, buttonHeight);
+        numList.setLocation(390, menuY);
+        Menu.add(numList);
 
-        //Exit Button Variables
-        Exit.setSize(menuWidth,menuHeight);
+        // Exit Button
+        Exit.setSize(buttonWidth,buttonHeight);
         Exit.setLocation(610,menuY);
         Menu.add(Exit);
         Exit.addActionListener(new ActionListener(){
@@ -93,7 +92,7 @@ public class MainMenu {
             }
         });
         
-        //Display Picture
+        // Display Picture
         imageLabel.setBounds((WIDTH-700)/2, 80, 700, 550);
         imageLabel.setVisible(true);
         Menu.add(imageLabel);

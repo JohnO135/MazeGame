@@ -16,13 +16,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class MazeCreator extends JFrame{
-    static int rows = 20;
-    static int columns = 20;
+    final static int rows = 20;
+    final static int columns = 20;
     int panelSize = 25;
     static int map[][] = new int[columns][rows];
     ArrayList<String> mapList;
     int mazeNum = 0;
     boolean mazeNumExistAlready = false;
+    static boolean exitMade = false; // make sure only one exit is made 
 
     public MazeCreator(){
         this.mapList = new ArrayList<>();
@@ -49,10 +50,16 @@ public class MazeCreator extends JFrame{
                     MazeTile tile = new MazeTile(x, y);
                     tile.setSize(panelSize-1, panelSize-1);
                     tile.setLocation((x*panelSize)+23, (y*panelSize)+25);
-                    if(map[x][y] == 0){
-                        tile.setBackground(Color.GRAY);
-                    }else{
-                        tile.setBackground(Color.WHITE);
+                    switch (map[x][y]) {
+                        case 2:
+                            tile.setBackground(Color.GREEN);
+                            break;
+                        case 1:
+                            tile.setBackground(Color.WHITE);
+                            break;
+                        default:
+                            tile.setBackground(Color.GRAY);
+                            break;
                     }
 
                     tile.setVisible(true);
@@ -128,11 +135,9 @@ public class MazeCreator extends JFrame{
                 for(int x = 0; x < rows; x++){
                     String mapChar = mapStr.substring(counter, counter+1);
                     if(!mapChar.equals("\r\n") && !mapChar.equals("\n")&& !mapChar.equals("\r")){//If it's a number
-                        //System.out.print(mapChar);
                         map[x][y] = Integer.parseInt(mapChar);
                     }else{//If it is a line break
                         x--;
-                        //System.out.print(mapChar);
                     }
                     counter++;
                 }

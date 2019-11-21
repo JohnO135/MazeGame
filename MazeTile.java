@@ -16,13 +16,39 @@ public class MazeTile extends JPanel{
         addMouseListener(new MouseAdapter(){
             @Override
             public void mousePressed(MouseEvent e) {
-                if(e.getButton() == MouseEvent.BUTTON1){
-                    setBackground(Color.WHITE);
-                    MazeCreator.map[x][y] = 1;
+                if(e.getButton() == MouseEvent.BUTTON1){ // right click for path/wall tile only
+                    switch (MazeCreator.map[x][y]) {
+                        case 0:
+                            setBackground(Color.WHITE);
+                            MazeCreator.map[x][y] = 1;
+                            break;
+                        case 1:
+                            setBackground(Color.GRAY);
+                            MazeCreator.map[x][y] = 0;
+                            break;
+                        case 2:
+                            setBackground(Color.WHITE);
+                            MazeCreator.map[x][y] = 1;
+                            MazeCreator.exitMade = false;
+                            break;
+                        default:
+                            setBackground(Color.WHITE);
+                            MazeCreator.map[x][y] = 1;
+                            break;
+                    }
                 }
-                if(e.getButton() == MouseEvent.BUTTON3){
-                    setBackground(Color.GRAY);
-                    MazeCreator.map[x][y] = 0;
+                if(e.getButton() == MouseEvent.BUTTON3){ // left click for exit tile (only 1 is made)
+                    if(MazeCreator.exitMade){
+                        if(MazeCreator.map[x][y] == 2){
+                            setBackground(Color.WHITE);
+                            MazeCreator.map[x][y] = 1;
+                            MazeCreator.exitMade = false;
+                        }
+                    }else{
+                        setBackground(Color.GREEN);
+                        MazeCreator.map[x][y] = 2;
+                        MazeCreator.exitMade = true;
+                    }
                 }
             }
         });
