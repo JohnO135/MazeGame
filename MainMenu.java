@@ -53,7 +53,7 @@ public class MainMenu {
         Start.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                new Maze(numList.getSelectedItem().toString());
+                new MazeGame(numList.getSelectedItem().toString());
                 Menu.setVisible(false);
             }
 
